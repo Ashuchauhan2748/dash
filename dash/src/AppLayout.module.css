@@ -1,12 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:global(body) {
+  margin: 0;
+  padding: 0;
+  background: #f0f2f5;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:global(#root) {
+  min-height: 100vh;
+}
 
 .app {
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  background: #ededed;
-  color: #1b1b1f;
-  font-family: 'IBM Plex Sans', 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #f0f2f5 0%, #e8ecf1 100%);
+  color: #1a1d23;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 .app * {
@@ -14,31 +27,61 @@
 }
 
 .shell {
-  width: 1366px;
+  width: 100%;
+  max-width: 1440px;
   display: grid;
-  grid-template-columns: 232px 1fr;
-  gap: 24px;
-  padding: 18px 19px;
+  grid-template-columns: 248px 1fr;
+  gap: 0;
+  min-height: 100vh;
 }
 
 .main {
   flex: 1;
-  padding-top: 10px;
+  padding: 32px 40px 40px;
+  overflow-y: auto;
 }
 
 .contentPane {
-  width: 1040px;
-  max-width: 1080px;
-  background: #f4f4f4;
-  border: 1px solid #e3d5d5;
-  border-radius: 6px;
-  padding: 18px 18px 16px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  max-width: 1100px;
+  background: #ffffff;
+  border: 1px solid #e2e6ec;
+  border-radius: 12px;
+  padding: 28px 32px 24px;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 6px 16px rgba(0, 0, 0, 0.04);
 }
 
 .footerActions {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 12px;
-  padding-top: 4px;
+  padding-top: 24px;
+  border-top: 1px solid #eef0f4;
+  margin-top: 8px;
+}
+
+.saving {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+  flex-shrink: 0;
 }

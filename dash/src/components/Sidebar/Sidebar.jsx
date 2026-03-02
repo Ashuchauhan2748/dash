@@ -20,7 +20,6 @@ function Sidebar({ navItems, activeIndex = 0 }) {
 
       <div className={styles.bottomArea}>
         <div className={styles.notifications}>
-          <span aria-hidden className={styles.bell} />
           <span>Notifications</span>
         </div>
 

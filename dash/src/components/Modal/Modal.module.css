@@ -1,0 +1,130 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.12),
+        0 1px 4px rgba(0, 0, 0, 0.06);
+    width: 90%;
+    max-width: 640px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.2s ease;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid #eef0f4;
+}
+
+.title {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1d23;
+}
+
+.closeButton {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: 1px solid #e2e6ec;
+    background: #f7f8fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    color: #636e7b;
+    font-family: inherit;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.closeButton:hover {
+    background: #eef0f4;
+    border-color: #d0d5de;
+}
+
+.body {
+    padding: 20px 24px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead {
+    background: linear-gradient(180deg, #f7f8fa 0%, #f0f2f5 100%);
+}
+
+.table th,
+.table td {
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #2f3542;
+    border-bottom: 1px solid #eef0f4;
+    text-align: left;
+}
+
+.table th {
+    font-weight: 700;
+    font-size: 12px;
+    color: #4a5568;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.table tr:nth-child(even) td {
+    background: #fcfcfd;
+}
+
+.table tr:hover td {
+    background: #f5f7fa;
+}
+
+.footer {
+    padding: 16px 24px;
+    border-top: 1px solid #eef0f4;
+    display: flex;
+    justify-content: flex-end;
+}

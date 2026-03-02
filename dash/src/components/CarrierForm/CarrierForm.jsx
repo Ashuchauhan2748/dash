@@ -1,12 +1,26 @@
+import Autocomplete from "../Autocomplete/Autocomplete";
 import buttonStyles from "../common/Button.module.css";
 import cardStyles from "../common/Card.module.css";
 import styles from "./CarrierForm.module.css";
+import { carrierNames, carrierRateChartMap, pickupZoneOptions } from "../../data/constantData";
 
 function CarrierForm({ form, onChange, onGetData, onViewPostalCodes }) {
+  const rateChartOptions = carrierRateChartMap[form.carrierName] || [];
+
+  const handleCarrierChange = (val) => {
+    onChange("carrierName", val);
+    const charts = carrierRateChartMap[val];
+    if (charts && charts.length > 0) {
+      onChange("rateChart", charts[0]);
+    } else {
+      onChange("rateChart", "");
+    }
+  };
+
   return (
     <section className={cardStyles.card}>
       <div className={cardStyles.cardHeader}>
-        <h2 className={cardStyles.cardTitle}>Carrier and Rate chart Details</h2>
+        <h2 className={cardStyles.cardTitle}>Carrier and Rate Chart Details</h2>
       </div>
 
       <div className={styles.formGrid}>
@@ -19,20 +33,20 @@ function CarrierForm({ form, onChange, onGetData, onViewPostalCodes }) {
             className={styles.input}
             value={form.carrierCode}
             onChange={(e) => onChange("carrierCode", e.target.value)}
-            disabled
           />
         </div>
 
         <div className={styles.field}>
           <label className={styles.label} htmlFor="carrierName">
-            Carrier name
+            Carrier Name
           </label>
-          <input
+          <Autocomplete
             id="carrierName"
-            className={styles.input}
             value={form.carrierName}
-            onChange={(e) => onChange("carrierName", e.target.value)}
-            disabled
+            onChange={handleCarrierChange}
+            suggestions={carrierNames}
+            inputClassName={styles.input}
+            placeholder="Type to search carrier..."
           />
         </div>
 
@@ -45,10 +59,14 @@ function CarrierForm({ form, onChange, onGetData, onViewPostalCodes }) {
             className={styles.select}
             value={form.rateChart}
             onChange={(e) => onChange("rateChart", e.target.value)}
+            disabled={rateChartOptions.length === 0}
           >
-            <option>GATI Surface</option>
-            <option>GATI Air</option>
-            <option>Express Ground</option>
+            {rateChartOptions.length === 0 && (
+              <option value="">Select a carrier first</option>
+            )}
+            {rateChartOptions.map((opt) => (
+              <option key={opt} value={opt}>{opt}</option>
+            ))}
           </select>
         </div>
 
@@ -62,9 +80,9 @@ function CarrierForm({ form, onChange, onGetData, onViewPostalCodes }) {
             value={form.pickupZoneSetupCode}
             onChange={(e) => onChange("pickupZoneSetupCode", e.target.value)}
           >
-            <option>Gati 1</option>
-            <option>Gati 2</option>
-            <option>Metro West</option>
+            {pickupZoneOptions.map((opt) => (
+              <option key={opt}>{opt}</option>
+            ))}
           </select>
         </div>
 
@@ -81,7 +99,7 @@ function CarrierForm({ form, onChange, onGetData, onViewPostalCodes }) {
             type="button"
             onClick={onViewPostalCodes}
           >
-            View Postal Code
+            View Postal Codes
           </button>
         </div>
       </div>
