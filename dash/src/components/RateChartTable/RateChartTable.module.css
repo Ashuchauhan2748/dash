@@ -1,0 +1,75 @@
+.addButton {
+  min-width: 120px;
+}
+
+.tableWrapper {
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid #e1e4ea;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.table thead {
+  background: #f3f4f6;
+}
+
+.table th,
+.table td {
+  padding: 12px 10px;
+  font-size: 13px;
+  color: #2f3138;
+  border-bottom: 1px solid #e6e8ed;
+  text-align: left;
+}
+
+.table th + th,
+.table td + td {
+  border-left: 1px solid #e6e8ed;
+}
+
+.table th:last-child,
+.table td:last-child {
+  text-align: center;
+}
+
+.table th {
+  font-weight: 700;
+}
+
+.table tr:nth-child(even) td {
+  background: #fafbfc;
+}
+
+.table tr:nth-child(odd) td {
+  background: #ffffff;
+}
+
+.tableInputs input,
+.tableInputs select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: 1px solid #d7dbe2;
+  background: #ffffff;
+  font-size: 13px;
+}
+
+.tableInputs input[type="number"] {
+  text-align: center;
+}
+
+.pinActions {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.compactActions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
